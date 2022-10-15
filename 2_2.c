@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include<ctype.h>
-
 int lencnt(char* str) {
     int len = 0;
     while(str[len]!='\0'){
@@ -59,49 +58,54 @@ char* sortN(char* str, int len, char* sorted) {
 }
 
 int main(int argc, char* argv[]) {
+    char flag = argv[2][1];
     if (argv[2][0] != '-') {
-        printf("Неверные флаги");
+        printf("Неверные флаги\n");
         return 0;
     }
     if (lencnt(argv[2]) != 2) {
-        printf("Неверные флаги");
+        printf("Неверные флаги\n");
         return 0;
     }
     if (argc < 3) {
-        printf("Недостаточно элементов");
+        printf("Недостаточно элементов\n");
         return 0;
     }
     else {
-        if(argc == 3 && argv[2][1] == 'c'){
-            printf("Не хватает аргумента");
+        if(argc == 3 && flag == 'c'){
+            printf("Не хватает аргумента\n");
             return 0;
         }
+        
         if(argc > 4){
-            printf("Слишком много аргументов");
+            printf("Слишком много аргументов\n");
             return 0;
         }
     }
     char* str = argv[1];
-    char flag = argv[2][1];
+    
     int len = lencnt(str);
 
     if(flag == 'l') {
         printf("%d", len);
     }
-    if(flag == 'r') {
+    else if(flag == 'r') {
         printf("%s", reverse(str, len));
     }
-    if(flag == 'u') {
+    else if(flag == 'u') {
         printf("%s", regU(str));
     }
-    if(flag == 'n') {
+    else if(flag == 'n') {
         char sorted[len];
         printf("%s", sortN(str, len, sorted));
     }
-    if(flag == 'c') {
+    else if(flag == 'c') {
         char* cont = argv[3];
         int contlen = lencnt(cont);
         printf("%s", concat(str, cont, len, contlen));
+    }
+    else {
+        printf("такого флага нет\n");
     }
     return 0;
 }
