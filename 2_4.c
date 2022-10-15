@@ -4,12 +4,12 @@
 
 double geom(int n, ...) {
     double res = 1;
-    va_list factor;
-    va_start(factor, n);
+    va_list num;
+    va_start(num, n);
     for(int i = 0; i < n; i++) {
-        res *= va_arg(factor, double);
+        res *= va_arg(num, double);
     }
-    va_end(factor);
+    va_end(num);
     return pow(res, 1.0 / n);
 }
 
