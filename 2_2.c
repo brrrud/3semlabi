@@ -102,7 +102,9 @@ int main(int argc, char* argv[]) {
     else if(flag == 'c') {
         char* cont = argv[3];
         int contlen = lencnt(cont);
-        printf("%s", concat(str, cont, len, contlen));
+        char* ans = concat(str, cont, len, contlen);
+        printf("%s", ans);
+        free(ans);
     }
     else {
         printf("такого флага нет\n");
