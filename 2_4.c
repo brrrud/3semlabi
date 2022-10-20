@@ -22,6 +22,17 @@ double power(double a, int n) {
         return power(a, n + 1) * (1.0 / a);
     } 
 }
+int count = 0;
+ 
+double Pow(double x, int k) {
+    count++;
+    if (k == 0) return 1;
+    if (k == 1) return x;
+    double y = Pow(x, k/2);
+    y = y * y;
+    if (k % 2) y *= x;
+    return y;
+}
 
 int main() {
     printf(" среднее геометрическое переданных ей чисел (n = 3)\n");
